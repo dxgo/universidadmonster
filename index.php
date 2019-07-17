@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-  require 'database.php';
+  require 'basededatos/database.php';
 
   if (isset($_SESSION['user_id'])) {
     $records = $conn->prepare('SELECT susu_codigo, susu_nombre FROM susu_usuario WHERE susu_codigo = :susu_codigo');
@@ -31,14 +31,14 @@
     <?php if(!empty($user)): ?>
       <br> Welcome. <?= $user['susu_nombre']; ?>
       <br>You are Successfully Logged In
-      <a href="logout.php">
+      <a href="login/logout.php">
         Logout
       </a>
     <?php else: ?>
-      <h1>Please Login or SignUp</h1>
+      <h1>Por favor ingresa o regístrate</h1>
 
-      <a href="login.php">Login</a> or
-      <a href="signup.php">SignUp</a>
+      <a href="login/login.php">Ingresa</a> or
+      <a href="login/signup.php">Registrate</a>
     <?php endif; ?>
   </body>
 </html>

@@ -5,7 +5,7 @@
   if (isset($_SESSION['user_id'])) {
     header('Location: /universidadmonster');
   }
-  require 'database.php';
+  require '../basededatos/database.php';
 
   if (!empty($_POST['susu_nombre']) && !empty($_POST['susu_password'])) {
     $records = $conn->prepare('SELECT susu_codigo, susu_nombre, susu_password FROM susu_usuario WHERE susu_nombre = :susu_nombre');
@@ -19,7 +19,7 @@
       $_SESSION['user_id'] = $results['susu_codigo'];
       header("Location: /universidadmonster");
     } else {
-      $message = 'Sorry, those credentials do not match';
+      $message = 'Lo sentimos, esas credenciales no coinciden';
     }
   }
 
@@ -31,22 +31,22 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
   </head>
   <body>
-    <?php require 'partials/header.php' ?>
+    <?php require '../partials/header.php' ?>
 
     <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
     <?php endif; ?>
 
-    <h1>Login</h1>
-    <span>or <a href="signup.php">SignUp</a></span>
+    <h1>Ingreso</h1>
+    <span>o <a href="signup.php">Registrate</a></span>
 
     <form action="login.php" method="POST">
       <input name="susu_nombre" type="text" placeholder="Ingrese su usuario">
       <input name="susu_password" type="password" placeholder="Ingrese su contraseña">
-      <input type="submit" value="Submit">
+      <input type="submit" value="ENVIAR">
     </form>
   </body>
 </html>

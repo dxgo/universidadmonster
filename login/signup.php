@@ -1,6 +1,6 @@
 <?php
 
-  require 'database.php';
+  require '../basededatos/database.php';
 
   $message = '';
 
@@ -15,9 +15,9 @@
     $stmt->bindParam(':susu_password', $password);
 
     if ($stmt->execute()) {
-      $message = 'Successfully created new user';
+      $message = 'Nuevo usuario creado con éxito.';
     } else {
-      $message = 'Sorry there must have been an issue creating your account';
+      $message = 'Lo sentimos, debe haber habido un problema al crear tu cuenta.';
     }
   }
 ?>
@@ -27,26 +27,26 @@
     <meta charset="utf-8">
     <title>SignUp</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
   </head>
   <body>
 
-    <?php require 'partials/header.php' ?>
+    <?php require '../partials/header.php' ?>
 
     <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
     <?php endif; ?>
 
     <h1>SignUp</h1>
-    <span>or <a href="login.php">Login</a></span>
+    <span>or <a href="./login.php">Login</a></span>
 
     <form action="signup.php" method="POST">
       <input name="peemp_codigo" type="text" placeholder="Ingrese su codigo de empleado">
       <input name="susu_codigo" type="text" placeholder="Ingrese su codigo de usuario">
       <input name="sper_codigo" type="text" placeholder="Ingrese su codigo de persona">
       <input name="susu_nombre" type="text" placeholder="Ingrese su codigo de email">
-      <input name="susu_password" type="password" placeholder="Enter your Password">
-      <input name="confirm_password" type="password" placeholder="Confirm Password">
+      <input name="susu_password" type="password" placeholder="Ingrese su contraseña">
+      <input name="confirm_password" type="password" placeholder="Confirmar contraseña">
       <input type="submit" value="Submit">
     </form>
 

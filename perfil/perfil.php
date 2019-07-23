@@ -20,24 +20,21 @@
       <div class="card card-body">
         <form action="save.php" method="POST">
           <div class="form-group">
-            <input type="text" name="nombre" class="form-control" placeholder="Nombre" autofocus>
+            <input type="text" name="SPER_CODIGO" class="form-control" placeholder="Codigo perfil" autofocus>
           </div>
           <div class="form-group">
-            <input type="text" name="codigou" class="form-control" placeholder="Codigo usuario">
+            <input type="text" name="CODIGO_ROL" class="form-control" placeholder="Codigo rol">
           </div>
           <div class="form-group">
-            <input type="text" name="codigop" class="form-control" placeholder="Codigo persona">
+            <input type="text" name="SSUB_CODIGO" class="form-control" placeholder="Codigo sub sistema">
           </div>
           <div class="form-group">
-            <input type="text" name="codigoe" class="form-control" placeholder="Codigo empleado">
-          </div>
+            <input type="text" name="SRO_CODIGO_ROL" class="form-control" placeholder="Rol">
+          </div> 
           <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Contraseña">
+            <textarea name="SPER_DESCRIPCION" rows="2" class="form-control" placeholder="Task Description"></textarea>
           </div>
-          <div class="form-group">
-            <input type="password" name="password_c" class="form-control" placeholder="Confirmar contraseña">
-          </div>
-          <input type="submit" name="save" class="btn btn-success btn-block" value="Guardar USUARIO">
+          <input type="submit" name="save" class="btn btn-success btn-block" value="Guardar PERFIL">
         </form>
       </div>
     </div>
@@ -46,31 +43,31 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Codigo perfil</th>
-            <th>Fecha de creación</th>
-            <th>Fecha de modificación</th>
+            <th>Perfil</th>
+            <th>Codigo empleado</th>
+            <th>Codigo persona</th>
+            <th>DEscripción</th>
             <th>Acción</th>
           </tr>
         </thead>
         <tbody>
 
           <?php
-          $query = "SELECT * FROM susu_usuario";
+          $query = "SELECT * FROM sper_perfil";
           $result = mysqli_query($conn, $query);    
 
           while($row = mysqli_fetch_assoc($result)) { ?>
           <tr>
-            <td><?php echo $row['SUSU_CODIGO']; ?></td>
-            <td><?php echo $row['SUSU_NOMBRE']; ?></td>
             <td><?php echo $row['SPER_CODIGO']; ?></td>
-            <td><?php echo $row['SUSU_FECHA_CREACION']; ?></td>
-            <td><?php echo $row['SUSU_FECHA_ULT_CAMBIO']; ?></td>
+            <td><?php echo $row['CODIGO_ROL']; ?></td>
+            <td><?php echo $row['SSUB_CODIGO']; ?></td>
+            <td><?php echo $row['SRO_CODIGO_ROL']; ?></td>
+            <td><?php echo $row['SPER_DESCRIPCION']; ?></td>
             <td>
-              <a href="edit.php?SUSU_CODIGO=<?php echo $row['SUSU_CODIGO']?>" class="btn btn-secondary">
+              <a href="edit.php?SPER_CODIGO=<?php echo $row['SPER_CODIGO']?>" class="btn btn-secondary">
                 <i class="fas fa-marker"></i>
               </a>
-              <a href="delete.php?SUSU_CODIGO=<?php echo $row['SUSU_CODIGO']?>" class="btn btn-danger">
+              <a href="delete.php?SPER_CODIGO=<?php echo $row['SPER_CODIGO']?>" class="btn btn-danger">
                 <i class="far fa-trash-alt"></i>
               </a>
             </td>

@@ -12,7 +12,7 @@ if(isset($_GET['SUSU_CODIGO'])) {
 
   $_SESSION['message'] = 'El usuario ha sido eliminado';
   $_SESSION['message_type'] = 'danger';
-  header('Location: usuario.php');
+  header('Location: area.php');
 }
 
 ?>

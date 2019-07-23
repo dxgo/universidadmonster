@@ -1,28 +1,20 @@
 <?php
 
 include('../basededatos/db.php');
-
-if ($_POST['password']==$_POST['password_c']){
 if (isset($_POST['save'])) {
-    $nombre = $_POST['nombre'];
-    $codigoe = $_POST['codigoe'];
-    $codigop = $_POST['codigop'];
-    $codigou = $_POST['codigou'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $query = "INSERT INTO susu_usuario (susu_nombre, peemp_codigo, susu_codigo, sper_codigo, susu_password) VALUES ('$nombre', '$codigop','$codigou','$codigoe','$password')";
+    $SPER_CODIGO = $_POST['SPER_CODIGO'];
+    $CODIGO_ROL = $_POST['CODIGO_ROL'];
+    $SSUB_CODIGO = $_POST['SSUB_CODIGO'];
+    $SRO_CODIGO_ROL = $_POST['SRO_CODIGO_ROL'];
+    $SPER_DESCRIPCION = $_POST['SPER_DESCRIPCION'];
+    $query = "INSERT INTO sper_perfil (SPER_CODIGO, CODIGO_ROL, SSUB_CODIGO, SRO_CODIGO_ROL, SPER_DESCRIPCION) VALUES ('$SPER_CODIGO', '$CODIGO_ROL','$SSUB_CODIGO','$SRO_CODIGO_ROL','$SPER_DESCRIPCION')";
     $result = mysqli_query($conn, $query);
     if(!$result) {
       die("Algo salio mal.");
     }
 
-    $_SESSION['message'] = 'Usuario ingresado exitosamente';
+    $_SESSION['message'] = 'Perfil ingresado exitosamente';
     $_SESSION['message_type'] = 'success';
-    header('Location: usuario.php'); 
-}
-}
-else{
-  $_SESSION['message'] = 'Las contraseñas no coinciden';
-  $_SESSION['message_type'] = 'danger';
-  header('Location: usuario.php'); 
+    header('Location: perfil.php'); 
 }
 ?>

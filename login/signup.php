@@ -4,7 +4,10 @@
 
   $message = '';
 
+if ($_POST['susu_password']==$_POST['confirm_password']){
+  
   if (!empty($_POST['susu_nombre']) && !empty($_POST['susu_password'])) {
+    //$fecha=getdate();
     $sql = "INSERT INTO susu_usuario (susu_nombre, susu_password, peemp_codigo, susu_codigo, sper_codigo) VALUES (:susu_nombre, :susu_password, :peemp_codigo, :susu_codigo, :sper_codigo)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':peemp_codigo', $_POST['peemp_codigo']);
@@ -19,7 +22,12 @@
     } else {
       $message = 'Lo sentimos, debe haber habido un problema al crear tu cuenta.';
     }
+    //echo "fecha $fecha";
   }
+    
+}else{
+  $message = "Las contraseñas no coinciden";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,8 +45,8 @@
       <p> <?= $message ?></p>
     <?php endif; ?>
 
-    <h1>SignUp</h1>
-    <span>or <a href="./login.php">Login</a></span>
+    <h1>Ingresa</h1>
+    <span>o <a href="./login.php">Login</a></span>
 
     <form action="signup.php" method="POST">
       <input name="peemp_codigo" type="text" placeholder="Ingrese su codigo de empleado">
